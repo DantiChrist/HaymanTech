@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Pricing | IT Support Brisbane | HaymanTech</title>
+    
+    <meta name="description" content="Transparent IT pricing. Home support $110/hr (inc GST), Business IT, and $99 Remote Fixes. No hidden fees. Local Brisbane Support.">
+    <link rel="canonical" href="https://haymantech.com.au/services.html">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <meta property="og:title" content="Services & Pricing | HaymanTech">
+    <meta property="og:description" content="Transparent IT pricing. No hidden fees. If I can't fix it, you don't pay.">
+    <meta property="og:image" content="https://haymantech.com.au/logo.png">
+    <meta property="og:url" content="https://haymantech.com.au/services.html">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What if you can't fix the problem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I operate on a strictly No Fix, No Fee basis. If I investigate the issue and cannot offer a solution or repair strategy, you will not be charged a cent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you charge for travel time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For my core areas (Macgregor, Sunnybank, Mt Gravatt, Eight Mile Plains), there is $0 travel fee. If you are further out, a small fee ($20-$40) may apply."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Remote Support secure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We use RustDesk, which is encrypted. You must approve the connection, and once disconnected, I cannot access your computer again."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Residential IT Support",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "HaymanTech"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Brisbane"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "IT Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Home Support",
+              "price": "110",
+              "priceCurrency": "AUD",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "110",
+                "priceCurrency": "AUD",
+                "unitCode": "HUR"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Remote Support",
+              "price": "99",
+              "priceCurrency": "AUD",
+              "description": "Flat rate remote fix"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { green: '#3a7042', dark: '#1a1a1a', blue: '#2563eb', bg: '#f2efe6' }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .modal-open { overflow: hidden; }
+        #remoteModal.hidden, #privacyModal.hidden { opacity: 0; pointer-events: none; }
+        #remoteModal:not(.hidden), #privacyModal:not(.hidden) { opacity: 1; pointer-events: auto; }
+        #mobileMenu.hidden { display: none; }
+    </style>
+</head>
+<body class="bg-brand-bg text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <nav class="sticky top-0 z-50 bg-brand-bg/95 backdrop-blur-sm border-b border-gray-200/50 shadow-sm">
+        <div class="container mx-auto px-4 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="logo.png" width="40" height="40" class="h-10 w-auto rounded-full" alt="HaymanTech Logo" onerror="this.style.display='none';">
+                <div class="hidden sm:block leading-none">
+                    <span class="block font-bold text-brand-dark text-lg">HaymanTech</span>
+                    <span class="block text-xs font-bold text-brand-green uppercase tracking-wide">Keeping It Simple</span>
+                </div>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-6">
+                <a href="index.html" class="text-gray-600 hover:text-brand-green font-bold text-sm transition">Home</a>
+                <a href="services.html" class="text-brand-green font-bold text-sm" aria-current="page">Services & Pricing</a>
+                <a href="about.html" class="text-gray-600 hover:text-brand-green font-bold text-sm transition">About & FAQ</a>
+                <a href="athena_ai.html" class="text-brand-blue font-bold text-sm border border-brand-blue/20 px-3 py-1 rounded-full hover:bg-brand-blue hover:text-white transition">
+                   <i class="ph-bold ph-robot"></i> Athena AI
+                </a>
+                
+                <button onclick="openModal()" class="text-brand-blue hover:underline flex items-center gap-1 cursor-pointer focus:outline-none font-bold text-sm">
+                    <i class="ph-bold ph-laptop"></i> Remote Help
+                </button>
+
+                <a href="tel:0477267968" class="bg-brand-green text-white px-5 py-2.5 rounded-lg hover:bg-green-800 transition flex items-center gap-2 shadow-lg animate-pulse-slow">
+                    <i class="ph-fill ph-phone-call"></i>
+                    <div class="flex flex-col leading-none text-left">
+                        <span class="text-[10px] uppercase font-bold text-green-100">A Call is Free</span>
+                        <span class="font-bold text-sm">0477 267 968</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="md:hidden flex items-center gap-4">
+                <a href="tel:0477267968" class="bg-brand-green text-white px-3 py-2 rounded-lg text-sm font-bold shadow-sm">
+                    <i class="ph-bold ph-phone"></i> Call
+                </a>
+                <button onclick="toggleMobileMenu()" class="text-brand-dark text-2xl focus:outline-none">
+                    <i class="ph-bold ph-list"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0 z-50">
+            <div class="flex flex-col p-4 space-y-4 text-center font-bold text-gray-600">
+                <a href="index.html" class="hover:text-brand-green py-2 border-b border-gray-50">Home</a>
+                <a href="services.html" class="text-brand-green py-2 border-b border-gray-50">Services & Pricing</a>
+                <a href="about.html" class="hover:text-brand-green py-2 border-b border-gray-50">About & FAQ</a>
+                <a href="athena_ai.html" class="text-brand-blue py-2 border-b border-gray-50"><i class="ph-bold ph-robot"></i> Athena AI</a>
+                <button onclick="openModal(); toggleMobileMenu()" class="text-brand-blue hover:underline py-2 flex items-center justify-center gap-2">
+                    <i class="ph-bold ph-laptop"></i> Remote Help
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="py-16 text-center">
+        <h1 class="text-4xl font-extrabold text-brand-dark mb-4">Services & Pricing</h1>
+        <p class="text-gray-600 max-w-xl mx-auto px-4">Transparent pricing. No hidden fees. <br>I speak plain English, not "Geek Speak".</p>
+    </div>
+
+    <div class="container mx-auto px-4 pb-20 space-y-16">
+
+        <div id="athena" class="bg-white text-brand-dark rounded-3xl overflow-hidden shadow-xl border-4 border-white flex flex-col md:flex-row relative">
+            <div class="absolute inset-0 border-4 border-brand-blue/20 rounded-3xl pointer-events-none"></div>
+            <div class="md:w-[30%] bg-brand-blue/10 relative group flex items-center justify-center p-8">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand-blue/20 rounded-full blur-2xl"></div>
+                    <img src="athena1.png" class="relative w-40 h-40 object-cover rounded-full border-4 border-white shadow-lg" 
+                         alt="Athena AI" onerror="this.src='https://placehold.co/400x400/3a7042/FFFFFF?text=AI'">
+                </div>
+                 <div class="absolute top-4 left-4 bg-brand-blue text-white px-3 py-1 rounded-full text-xs font-bold uppercase shadow-sm">
+                    <i class="ph-bold ph-robot"></i> New
+                </div>
+            </div>
+            <div class="p-8 flex-1 flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full text-xs font-bold uppercase">
+                        <i class="ph-fill ph-lightning"></i> Instant Help
+                    </div>
+                    <div class="text-right">
+                        <div class="text-3xl font-bold text-brand-blue">Free</div>
+                        <div class="text-xs text-gray-400">24/7 Availability</div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-brand-dark mb-2">Athena AI</h2>
+                <p class="text-gray-500 mb-6 leading-relaxed text-sm">
+                    My automated assistant can diagnose WiFi issues, printer faults, and email problems instantly. It's the fastest way to get an answer, and it costs nothing.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-6 text-sm text-gray-500">
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-blue"></i> WiFi Diagnostics</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-blue"></i> Printer Fixes</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-blue"></i> Outlook Help</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-check text-brand-blue"></i> Hardware Checks</div>
+                </div>
+                
+                <div class="mt-auto pt-4 border-t border-gray-100 flex flex-col sm:flex-row gap-4 items-center">
+                    <div class="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-wide">
+                        <i class="ph-fill ph-robot text-lg text-brand-blue"></i> Automated Tool
+                    </div>
+                    <a href="athena_ai.html" class="bg-brand-blue text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-600 transition w-full sm:w-auto text-center shadow-lg flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-play"></i> Launch Athena
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="home" class="bg-brand-green text-white rounded-3xl overflow-hidden shadow-xl border-4 border-brand-green flex flex-col md:flex-row">
+            <div class="md:w-[30%] bg-green-900/20 relative group">
+                <img src="home_service.png" class="w-full h-full object-cover min-h-[250px] transition-transform duration-700 group-hover:scale-105" 
+                     alt="Residential IT Support Technician" onerror="this.src='https://placehold.co/400x600/3a7042/FFFFFF?text=Home+Support'">
+                <div class="absolute top-4 left-4 bg-white text-brand-green px-3 py-1 rounded-full text-xs font-bold uppercase shadow-sm">
+                    <i class="ph-fill ph-shield-check"></i> Risk Free
+                </div>
+            </div>
+            <div class="p-8 flex-1 flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="inline-flex items-center gap-2 bg-white text-brand-green px-3 py-1 rounded-full text-xs font-bold uppercase">
+                        <i class="ph-fill ph-house"></i> Residential
+                    </div>
+                    <div class="text-right">
+                        <div class="text-3xl font-bold">$110</div>
+                        <div class="text-xs text-green-100">per hour (inc GST)</div>
+                    </div>
+                </div>
+                
+                <h2 class="text-3xl font-bold text-white mb-2">Home IT Support</h2>
+                <p class="text-green-50 mb-6 leading-relaxed text-sm">
+                    Patient help for seniors and families in Brisbane South. WiFi dead zones, slow laptops, or printer frustrations. I'll get your home running smoothly again.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-6 text-sm">
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-wifi-high text-green-300"></i> WiFi & NBN Help</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-printer text-green-300"></i> Printer Setup</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-shield-check text-green-300"></i> Virus Removal</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-device-tablet text-green-300"></i> iPad & Phone Setup</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-hard-drives text-green-300"></i> Data Backup</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-envelope text-green-300"></i> Email Recovery</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-lightbulb text-green-300"></i> Smart Home Setup</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-key text-green-300"></i> Password Help</div>
+                </div>
+
+                <div class="mt-auto pt-4 border-t border-green-700/50 flex flex-col sm:flex-row gap-4 items-center">
+                    <div class="flex items-center gap-2 text-green-200 text-xs font-bold uppercase tracking-wide">
+                        <i class="ph-fill ph-check-circle text-lg"></i> No Fix, No Fee Guarantee
+                    </div>
+                    <a href="tel:0477267968" class="bg-white text-brand-green px-6 py-2 rounded-lg font-bold hover:bg-green-50 transition w-full sm:w-auto text-center shadow-lg">
+                        Book Home Visit
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="business" class="bg-brand-dark text-white rounded-3xl overflow-hidden shadow-xl border-4 border-brand-dark flex flex-col md:flex-row">
+            <div class="md:w-[30%] bg-white/5 relative group order-1 md:order-1">
+                <img src="business_service.png" class="w-full h-full object-cover min-h-[250px] transition-transform duration-700 group-hover:scale-105" 
+                     alt="Small Business IT Support" onerror="this.src='https://placehold.co/400x600/1a1a1a/FFFFFF?text=Business+IT'">
+                 <div class="absolute top-4 left-4 bg-brand-green text-white px-3 py-1 rounded-full text-xs font-bold uppercase shadow-sm">
+                    <i class="ph-fill ph-briefcase"></i> Enterprise Grade
+                </div>
+            </div>
+            <div class="p-8 flex-1 flex flex-col order-2 md:order-2">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="inline-flex items-center gap-2 bg-white text-brand-dark px-3 py-1 rounded-full text-xs font-bold uppercase">
+                        <i class="ph-fill ph-briefcase"></i> Commercial
+                    </div>
+                    <div class="text-right">
+                        <div class="text-3xl font-bold">Quote</div>
+                        <div class="text-xs text-gray-400">Project / Retainer</div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mb-2">Small Business IT</h2>
+                <p class="text-gray-300 mb-6 leading-relaxed text-sm">
+                    Enterprise-grade security without the enterprise price tag. I ensure your data is safe and your staff are productive.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-6 text-sm text-gray-300">
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-microsoft-outlook text-brand-green"></i> M365 Migration</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-lock-key text-brand-green"></i> Security Audits</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-users-three text-brand-green"></i> Employee Onboarding</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-cloud-arrow-up text-brand-green"></i> Disaster Recovery</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-desktop text-brand-green"></i> Hardware Sales</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-network text-brand-green"></i> Network Manage</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-phone-call text-brand-green"></i> VoIP Phone Setup</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-truck text-brand-green"></i> Office Moves</div>
+                </div>
+
+                 <div class="mt-auto pt-4 border-t border-white/10 flex flex-col sm:flex-row gap-4 items-center">
+                    <div class="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-wide">
+                        <i class="ph-fill ph-check-circle text-lg text-brand-green"></i> Brisbane-Local Support
+                    </div>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSct5a0tqWQoIy5rDagUG7V9EP1CO9EbCUrErPrAccSylIXtZQ/viewform?usp=sharing" target="_blank" rel="noopener" class="bg-brand-green text-white px-6 py-2 rounded-lg font-bold hover:bg-green-700 transition w-full sm:w-auto text-center shadow-lg">
+                        Get a Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="remote" class="bg-brand-blue text-white rounded-3xl overflow-hidden shadow-xl border-4 border-brand-blue flex flex-col md:flex-row">
+            <div class="md:w-[30%] bg-blue-900/20 relative group">
+                <img src="remote_service.png" class="w-full h-full object-cover min-h-[250px] transition-transform duration-700 group-hover:scale-105" 
+                     alt="Remote Computer Fix" onerror="this.src='https://placehold.co/400x600/2563eb/FFFFFF?text=Remote+Fix'">
+                 <div class="absolute top-4 left-4 bg-white text-brand-blue px-3 py-1 rounded-full text-xs font-bold uppercase shadow-sm">
+                    <i class="ph-fill ph-lightning"></i> Instant Fix
+                </div>
+            </div>
+            <div class="p-8 flex-1 flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="inline-flex items-center gap-2 bg-white text-brand-blue px-3 py-1 rounded-full text-xs font-bold uppercase">
+                        <i class="ph-fill ph-laptop"></i> Australia-Wide
+                    </div>
+                    <div class="text-right">
+                        <div class="text-3xl font-bold">$99</div>
+                        <div class="text-xs text-blue-100">Flat Rate (inc GST)</div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mb-2">Remote Fix</h2>
+                <p class="text-blue-50 mb-6 leading-relaxed text-sm">
+                    The fastest way to get help. If you have internet access, I can securely connect to your screen and fix software issues instantly.
+                    <br><br>
+                    <strong>Note:</strong> You must book an appointment time with Dan before starting a session.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-6 text-sm">
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-200"></i> Software Errors</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-200"></i> Email Configuration</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-200"></i> Virus Scans</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-200"></i> "How-to" Training</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-200"></i> Driver Updates</div>
+                    <div class="flex items-center gap-2"><i class="ph-bold ph-check text-blue-200"></i> Browser Cleanup</div>
+                </div>
+                
+                <div class="mt-auto pt-4 border-t border-blue-700/50 flex flex-col sm:flex-row gap-4 items-center">
+                    <div class="flex items-center gap-2 text-blue-200 text-xs font-bold uppercase tracking-wide">
+                        <i class="ph-fill ph-calendar-check text-lg"></i> Booking Required
+                    </div>
+                    <button onclick="openModal()" class="bg-white text-brand-blue px-6 py-2 rounded-lg font-bold hover:bg-blue-50 transition w-full sm:w-auto text-center shadow-lg flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-download-simple"></i> Book & Start Session
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-8 border border-gray-200 shadow-sm max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-brand-dark mb-6 text-center">How Payments Work</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="p-4">
+                    <div class="bg-green-100 text-brand-green w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">1</div>
+                    <h3 class="font-bold mb-2">Fair Billing</h3>
+                    <p class="text-sm text-gray-500">Hourly work is billed in 15-minute blocks. You never pay for a full hour if it takes 15 minutes. Prices include GST.</p>
+                </div>
+                <div class="p-4 border-t md:border-t-0 md:border-l border-gray-100">
+                    <div class="bg-green-100 text-brand-green w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">2</div>
+                    <h3 class="font-bold mb-2">No "Fix" No Fee</h3>
+                    <p class="text-sm text-gray-500">If I can't find a solution to your problem, you don't pay a cent. Simple.</p>
+                </div>
+                <div class="p-4 border-t md:border-t-0 md:border-l border-gray-100">
+                    <div class="bg-green-100 text-brand-green w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">3</div>
+                    <h3 class="font-bold mb-2">Easy Payment</h3>
+                    <p class="text-sm text-gray-500">I accept Card (Tap to Pay), Cash, or Bank Transfer. Invoices are emailed instantly.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-3xl mx-auto pt-10 border-t border-gray-200">
+            <h3 class="font-bold text-gray-400 uppercase text-xs tracking-widest mb-6 text-center">Frequently Asked Questions</h3>
+            <div class="space-y-4">
+                <details class="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                    <summary class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50 transition">
+                        <span class="font-bold text-sm text-brand-dark">What if you can't fix the problem?</span>
+                        <span class="text-gray-400 transition group-open:rotate-180"><i class="ph-bold ph-caret-down"></i></span>
+                    </summary>
+                    <div class="p-4 pt-0 text-gray-600 text-sm leading-relaxed border-t border-gray-100">
+                        <div class="mt-2">I operate on a strictly <strong>No Fix, No Fee</strong> basis. If I investigate the issue and cannot offer a solution or repair strategy, you will not be charged a cent. This guarantee is in addition to your rights under the Australian Consumer Law.</div>
+                    </div>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                    <summary class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50 transition">
+                        <span class="font-bold text-sm text-brand-dark">Do you charge for travel time?</span>
+                        <span class="text-gray-400 transition group-open:rotate-180"><i class="ph-bold ph-caret-down"></i></span>
+                    </summary>
+                    <div class="p-4 pt-0 text-gray-600 text-sm leading-relaxed border-t border-gray-100">
+                        <div class="mt-2">For my core areas (Macgregor, Sunnybank, Mt Gravatt, Eight Mile Plains), there is <strong>$0 travel fee</strong>. If you are further out (e.g., Redlands or Logan), a small fee ($20-$40) may apply to cover fuel and time. This will always be agreed upon before I arrive.</div>
+                    </div>
+                </details>
+                <details class="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                    <summary class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50 transition">
+                        <span class="font-bold text-sm text-brand-dark">Is the Remote Support secure?</span>
+                        <span class="text-gray-400 transition group-open:rotate-180"><i class="ph-bold ph-caret-down"></i></span>
+                    </summary>
+                    <div class="p-4 pt-0 text-gray-600 text-sm leading-relaxed border-t border-gray-100">
+                        <div class="mt-2">Yes. I use RustDesk, which is encrypted. You must approve the connection, you can watch everything I do, and once we disconnect, I cannot access your computer again without your permission.</div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-brand-bg border-t border-brand-dark/5 py-12 text-sm text-gray-500 mt-auto">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1">
+                <a href="index.html" class="flex items-center gap-2 mb-4">
+                    <img src="logo.png" class="h-8" alt="HaymanTech">
+                    <span class="font-bold text-gray-400">HAYMANTECH</span>
+                </a>
+                <p class="mb-4 italic">"Hospitality Heart. Engineering Brain."</p>
+                <div class="text-xs mb-4">
+                     <p><strong>ABN:</strong> 93 123 456 789</p> 
+                </div>
+                <div class="flex gap-4 text-xl">
+                    <a href="https://wa.me/61477267968" class="hover:text-green-600 transition" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                    <a href="mailto:dan@haymantech.com.au" class="hover:text-brand-blue transition" aria-label="Email"><i class="ph-fill ph-envelope"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-brand-dark mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="services.html" class="hover:text-brand-green">Services & Pricing</a></li>
+                    <li><a href="about.html" class="hover:text-brand-green">About Dan</a></li>
+                    <li><a href="#remote" onclick="openModal()" class="hover:text-brand-blue">Remote Support</a></li>
+                    <li><a href="athena_ai.html" class="hover:text-brand-green"><i class="ph-bold ph-robot"></i> Athena AI</a></li>
+                    <li><a href="#" onclick="openPrivacy(); return false;" class="hover:text-brand-green text-xs">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                 <h4 class="font-bold text-brand-dark mb-4">Service Area</h4>
+                <ul class="space-y-2 text-xs mb-4">
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-green"></i> Macgregor & Sunnybank</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-green"></i> Mt Gravatt & Wishart</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-green"></i> Eight Mile Plains</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-green"></i> Brisbane CBD & South Brisbane</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-globe text-brand-blue"></i> Australia-Wide (Remote)</li>
+                </ul>
+                <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm h-32 w-full opacity-80 hover:opacity-100 transition">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14144.13523297746!2d153.06456725!3d-27.5627678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b9144c9b365511b%3A0x502a35af3de8860!2sMacgregor%20QLD%204109!5e0!3m2!1sen!2sau!4v1700000000000!5m2!1sen!2sau" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="HaymanTech Service Area">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="col-span-1 md:col-span-1 bg-white/50 p-4 rounded-xl border border-gray-100 h-fit">
+                <h4 class="font-bold text-brand-dark mb-2">Our Guarantee</h4>
+                <p class="text-[10px] leading-relaxed mb-3">
+                    Our services come with guarantees that cannot be excluded under the Australian Consumer Law. 
+                </p>
+                <div class="flex gap-3 text-2xl opacity-40">
+                    <i class="ph-fill ph-shield-check" title="Insured"></i>
+                    <i class="ph-bold ph-lock-key" title="Secure Data"></i>
+                </div>
+                <p class="text-[10px] mt-2">© 2026 HaymanTech.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-end">
+        <a href="athena_ai.html" class="bg-brand-blue text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center border-2 border-white/20 w-14 h-14" title="Try Athena AI">
+            <i class="ph-fill ph-robot text-2xl"></i>
+        </a>
+        <a href="tel:0477267968" class="bg-brand-dark text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center border-2 border-white/20 w-14 h-14" title="Emergency Call">
+            <i class="ph-fill ph-phone text-2xl"></i>
+        </a>
+        <a href="https://wa.me/61477267968" target="_blank" rel="noopener" class="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center border-2 border-white/20 w-14 h-14" title="Chat on WhatsApp">
+            <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+        </a>
+    </div>
+
+    <div id="remoteModal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-900/70 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <div class="relative transform overflow-hidden rounded-3xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-md border-4 border-brand-blue">
+                    <div class="bg-blue-50 px-4 pb-4 pt-5 sm:p-6 border-b border-blue-100 text-center">
+                        <div class="mx-auto flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 mb-4">
+                            <i class="ph-bold ph-laptop text-2xl text-brand-blue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold leading-6 text-brand-dark">Start Remote Support?</h3>
+                        <p class="mt-2 text-sm text-gray-500">I use <strong>RustDesk</strong> to securely connect to your computer.</p>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 gap-2">
+                        <button type="button" onclick="startDownload()" class="inline-flex w-full justify-center rounded-xl bg-brand-blue px-3 py-3 text-sm font-bold text-white shadow-sm hover:bg-blue-700 sm:w-auto items-center gap-2">
+                            <i class="ph-bold ph-download-simple"></i> Download Tool
+                        </button>
+                        <button type="button" onclick="closeModal()" class="mt-3 sm:mt-0 inline-flex w-full justify-center rounded-xl px-3 py-3 text-sm font-bold text-gray-400 hover:text-gray-600 sm:w-auto">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-900/70 backdrop-blur-sm transition-opacity" onclick="closePrivacy()"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4">
+                <div class="relative transform rounded-3xl bg-white text-left shadow-2xl transition-all sm:w-full sm:max-w-2xl border-4 border-gray-100 max-h-[80vh] overflow-y-auto">
+                    <div class="p-8">
+                        <h2 class="text-2xl font-bold text-brand-dark mb-4">Privacy Policy & Consumer Guarantees</h2>
+                        <div class="prose text-sm text-gray-600 space-y-4">
+                            <h3 class="font-bold text-black">1. Data Collection</h3>
+                            <p>We collect personal information (Name, Phone, Address) strictly for the purpose of delivering IT services. We do not sell your data.</p>
+                            <h3 class="font-bold text-black">2. Overseas Disclosure</h3>
+                            <p>We use third-party tools (such as Google Workspace and RustDesk) which may process data on servers located outside of Australia.</p>
+                            <h3 class="font-bold text-black">3. Australian Consumer Law (ACL)</h3>
+                            <p>Our goods and services come with guarantees that cannot be excluded under the Australian Consumer Law.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-6 py-4 flex flex-row-reverse">
+                        <button type="button" onclick="closePrivacy()" class="inline-flex justify-center rounded-xl bg-brand-dark px-6 py-3 text-sm font-bold text-white hover:bg-gray-800">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('remoteModal');
+        const body = document.body;
+        const installerUrl = "https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-x86_64.msi";
+        function openModal() { modal.classList.remove('hidden'); body.classList.add('modal-open'); }
+        function closeModal() { modal.classList.add('hidden'); body.classList.remove('modal-open'); }
+        function startDownload() { window.location.href = installerUrl; closeModal(); }
+
+        function openPrivacy() { document.getElementById('privacyModal').classList.remove('hidden'); body.classList.add('modal-open'); }
+        function closePrivacy() { document.getElementById('privacyModal').classList.add('hidden'); body.classList.remove('modal-open'); }
+
+        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+        document.addEventListener('keydown', function(event) { if (event.key === "Escape") { closeModal(); closePrivacy(); } });
+    </script>
+
+</body>
+</html>

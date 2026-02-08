@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Support Brisbane South | Home & Business Support | HaymanTech</title>
+    <meta name="description" content="Expert mobile IT support in Macgregor, Sunnybank, and Mt Gravatt. We fix WiFi, computers, and business networks. No Fix, No Fee Guarantee. Call Dan.">
+    <link rel="canonical" href="https://haymantech.com.au/">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ComputerRepairService",
+      "name": "HaymanTech",
+      "image": "https://haymantech.com.au/logo.png",
+      "telephone": "0477 267 968",
+      "email": "dan@haymantech.com.au",
+      "priceRange": "$$",
+      "address": { "@type": "PostalAddress", "addressLocality": "Macgregor", "addressRegion": "QLD", "postalCode": "4109", "addressCountry": "AU" },
+      "geo": { "@type": "GeoCoordinates", "latitude": -27.56, "longitude": 153.07 },
+      "paymentAccepted": "Cash, Credit Card, Bank Transfer"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brand: { green: '#3a7042', dark: '#1a1a1a', blue: '#2563eb', bg: '#f2efe6' } },
+                    animation: { 'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite' }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .modal-open { overflow: hidden; }
+        #remoteModal.hidden, #privacyModal.hidden, #exitModal.hidden { opacity: 0; pointer-events: none; }
+        #remoteModal:not(.hidden), #privacyModal:not(.hidden), #exitModal:not(.hidden) { opacity: 1; pointer-events: auto; }
+        #cookieBanner { transform: translateY(100%); transition: transform 0.5s ease-in-out; }
+        #cookieBanner.show { transform: translateY(0); }
+        .service-card:hover .service-img { transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-brand-bg text-gray-800 antialiased flex flex-col min-h-screen pb-20 md:pb-0">
+
+    <div id="cookieBanner" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-[0_-5px_15px_rgba(0,0,0,0.1)] z-[70] flex flex-col md:flex-row items-center justify-between gap-4 max-w-screen-xl mx-auto rounded-t-xl hidden md:flex">
+        <div class="text-xs text-gray-600">
+            <p class="font-bold text-brand-dark">We respect your privacy.</p>
+            <p>We use minimal cookies. No creepy tracking. <a href="#" onclick="openPrivacy(); return false;" class="underline hover:text-brand-green">Read Privacy Policy</a>.</p>
+        </div>
+        <div class="flex gap-2">
+            <button onclick="acceptCookies()" class="bg-brand-dark text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-gray-800 transition">Okay, got it</button>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-50 bg-brand-bg/95 backdrop-blur-sm border-b border-gray-200/50 shadow-sm">
+        <div class="container mx-auto px-4 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="logo.png" width="40" height="40" class="h-10 w-auto rounded-full" alt="HaymanTech Logo" onerror="this.style.display='none'">
+                <div class="block leading-none">
+                    <span class="block font-bold text-brand-dark text-lg">HaymanTech</span>
+                    <span class="block text-xs font-bold text-brand-green uppercase tracking-wide">Keeping It Simple</span>
+                </div>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-6">
+                <a href="index.html" class="text-brand-green font-bold text-sm" aria-current="page">Home</a>
+                <a href="services.html" class="text-gray-600 hover:text-brand-green font-bold text-sm transition">Services</a>
+                <a href="about.html" class="text-gray-600 hover:text-brand-green font-bold text-sm transition">About</a>
+                <a href="athena_ai.html" class="text-brand-blue font-bold text-sm border border-brand-blue/20 px-3 py-1 rounded-full hover:bg-brand-blue hover:text-white transition">
+                   <i class="ph-bold ph-robot"></i> Athena AI
+                </a>
+                <button onclick="openModal()" class="text-brand-blue hover:underline flex items-center gap-1 cursor-pointer focus:outline-none font-bold text-sm">
+                    <i class="ph-bold ph-laptop"></i> Remote Help
+                </button>
+                <a href="tel:0477267968" class="bg-brand-green text-white px-5 py-2.5 rounded-lg hover:bg-green-800 transition flex items-center gap-2 shadow-lg animate-pulse-slow">
+                    <i class="ph-fill ph-phone-call"></i>
+                    <span class="font-bold text-sm">0477 267 968</span>
+                </a>
+            </div>
+
+            <div class="md:hidden flex items-center gap-4">
+                <button onclick="toggleMobileMenu()" class="text-brand-dark text-2xl focus:outline-none"><i class="ph-bold ph-list"></i></button>
+            </div>
+        </div>
+        
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0 z-50">
+            <div class="flex flex-col p-4 space-y-4 text-center font-bold text-gray-600">
+                <a href="index.html" class="text-brand-green py-2 border-b border-gray-50">Home</a>
+                <a href="services.html" class="hover:text-brand-green py-2 border-b border-gray-50">Services & Pricing</a>
+                <a href="about.html" class="hover:text-brand-green py-2 border-b border-gray-50">About & FAQ</a>
+                <a href="athena_ai.html" class="text-brand-blue py-2 border-b border-gray-50"><i class="ph-bold ph-robot"></i> Athena AI</a>
+                <button onclick="openModal(); toggleMobileMenu()" class="text-brand-blue hover:underline py-2 flex items-center justify-center gap-2">
+                    <i class="ph-bold ph-laptop"></i> Remote Help
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-brand-bg border-b border-brand-dark/5 overflow-hidden">
+        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1 space-y-6">
+                <div class="inline-flex items-center gap-2 bg-green-50 text-brand-green px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-brand-green/10">
+                    <i class="ph-fill ph-shield-check"></i> Your Local IT Guardian
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-brand-dark leading-[1.1]">
+                    Technology is stressful.<br>
+                    <span class="text-brand-green">Keep IT Simple.</span>
+                </h1>
+                <p class="text-xl text-gray-600 leading-relaxed max-w-xl">
+                    I'm Dan. I’ve spent 15 years in hospitality learning how to take care of people, and 5 years in enterprise engineering learning how to fix tech.
+                </p>
+                
+                <div class="bg-white/50 border border-gray-200 rounded-lg p-3 text-xs text-gray-500 flex items-center gap-2 max-w-md">
+                     <i class="ph-bold ph-clock-counter-clockwise text-brand-blue"></i>
+                     <span><strong>Recent Fixes:</strong> WiFi in Sunnybank, Printer in Mt Gravatt.</span>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="athena_ai.html" class="bg-brand-blue text-white px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-blue-700 hover:-translate-y-1 transition-all text-center flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-robot"></i> Try Athena AI (Free)
+                    </a>
+                    <a href="tel:0477267968" class="bg-brand-green text-white px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-green-800 hover:-translate-y-1 transition-all text-center flex items-center justify-center gap-2">
+                         <i class="ph-bold ph-phone"></i> Call Dan (Free)
+                    </a>
+                </div>
+            </div>
+            <div class="w-full md:w-5/12 relative">
+                <div class="absolute inset-0 bg-brand-green/5 rounded-full blur-3xl -z-10"></div>
+                <img src="athena1.png" width="600" height="600" class="rounded-3xl shadow-2xl border-8 border-white w-full object-cover transform rotate-1 bg-gray-200" 
+                     alt="HaymanTech Mascot Athena" 
+                     onerror="this.src='https://placehold.co/600x600/3a7042/FFFFFF?text=Athena+The+Dog'">
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 bg-brand-bg">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                
+                <a href="services.html#home" class="service-card h-full group bg-brand-green rounded-3xl shadow-xl hover:shadow-2xl transition-all overflow-hidden flex flex-col border-4 border-brand-green">
+                    <div class="h-64 bg-green-900/20 overflow-hidden flex items-center justify-center relative">
+                        <img src="home_service.png" width="400" height="300" loading="lazy" 
+                             class="service-img w-full h-full object-cover object-top transition-transform duration-500" 
+                             alt="Home IT Support"
+                             onerror="this.src='https://placehold.co/400x300/3a7042/FFFFFF?text=Home+Support'">
+                    </div>
+                    <div class="p-8 text-center flex-1 flex flex-col bg-brand-green">
+                        <h3 class="font-bold text-2xl mb-3 text-white">Home Support</h3>
+                        <p class="text-green-50 mb-6 leading-relaxed opacity-90 text-sm">WiFi dead zones, slow laptops, or printer frustrations. I'll get your home running smoothly again.</p>
+                        <div class="text-white font-extrabold text-xl pt-4 border-t border-white/20 mt-auto">Learn More →</div>
+                    </div>
+                </a>
+
+                <a href="services.html#business" class="service-card h-full group bg-brand-dark rounded-3xl shadow-xl hover:shadow-2xl transition-all overflow-hidden flex flex-col border-4 border-brand-dark">
+                    <div class="h-64 bg-white/5 overflow-hidden flex items-center justify-center relative">
+                        <img src="business_service.png" width="400" height="300" loading="lazy" 
+                             class="service-img w-full h-full object-cover object-top transition-transform duration-500" 
+                             alt="Business IT Support"
+                             onerror="this.src='https://placehold.co/400x300/1a1a1a/FFFFFF?text=Business+IT'">
+                    </div>
+                    <div class="p-8 text-center flex-1 flex flex-col bg-brand-dark">
+                        <h3 class="font-bold text-2xl mb-3 text-white">Business IT</h3>
+                        <p class="text-gray-300 mb-6 leading-relaxed opacity-90 text-sm">M365, secure networking, and hardware procurement. Professional support for your livelihood.</p>
+                        <div class="text-white font-extrabold text-xl pt-4 border-t border-white/20 mt-auto">Learn More →</div>
+                    </div>
+                </a>
+
+                <div onclick="openModal()" class="service-card h-full group bg-brand-blue rounded-3xl shadow-xl hover:shadow-2xl transition-all overflow-hidden flex flex-col border-4 border-brand-blue cursor-pointer">
+                    <div class="h-64 bg-blue-900/20 overflow-hidden flex items-center justify-center relative">
+                        <img src="remote_service.png" width="400" height="300" loading="lazy" 
+                             class="service-img w-full h-full object-cover object-top transition-transform duration-500" 
+                             alt="Remote IT Fix"
+                             onerror="this.src='https://placehold.co/400x300/2563eb/FFFFFF?text=Remote+Fix'">
+                    </div>
+                    <div class="p-8 text-center flex-1 flex flex-col bg-brand-blue">
+                        <h3 class="font-bold text-2xl mb-3 text-white">Remote Fix</h3>
+                        <p class="text-blue-50 mb-6 leading-relaxed opacity-90 text-sm">Software issues, email setup, or virus cleanup. I can help you instantly.</p>
+                        <div class="text-white font-extrabold text-xl pt-4 border-t border-white/20 mt-auto">Learn More →</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="ticket" class="py-12 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-brand-dark mb-6">How can I help you today?</h2>
+             <div class="bg-brand-dark p-6 rounded-[2rem] shadow-lg max-w-lg mx-auto text-left flex flex-col">
+                <h3 class="font-bold text-white text-xl mb-4 flex items-center gap-2"><i class="ph-bold ph-envelope-simple"></i> Quick Message</h3>
+                
+                <form onsubmit="handleContactSubmit(event)" class="space-y-3 flex-1 flex flex-col">
+                    <div class="text-xs text-gray-400 mb-1">I will reply via Text/SMS ASAP.</div>
+                    <input type="text" id="smsName" placeholder="Your Name" required class="w-full px-4 py-3 rounded-lg text-sm bg-gray-800 text-white border border-gray-700 focus:border-brand-green focus:outline-none">
+                    <input type="tel" id="smsPhone" placeholder="Phone Number" required class="w-full px-4 py-3 rounded-lg text-sm bg-gray-800 text-white border border-gray-700 focus:border-brand-green focus:outline-none">
+                    <textarea id="smsMessage" rows="3" placeholder="How can I help?" required class="w-full px-4 py-3 rounded-lg text-sm bg-gray-800 text-white border border-gray-700 focus:border-brand-green focus:outline-none"></textarea>
+                    <button type="submit" class="mt-auto w-full bg-brand-green text-white font-bold text-sm py-4 rounded-xl shadow-md hover:bg-green-600 transition flex items-center justify-center gap-2">
+                        Send Text Message <i class="ph-bold ph-paper-plane-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="fixed bottom-0 left-0 right-0 z-[60] bg-white border-t border-gray-200 shadow-2xl flex md:hidden h-16">
+        <a href="athena_ai.html" class="flex-1 flex flex-col items-center justify-center text-brand-blue border-r border-gray-100 active:bg-blue-50">
+            <i class="ph-bold ph-robot text-xl"></i>
+            <span class="text-[10px] font-bold uppercase mt-0.5">Athena</span>
+        </a>
+        <a href="#" onclick="triggerText(); return false;" class="flex-1 flex flex-col items-center justify-center text-brand-dark border-r border-gray-100 active:bg-gray-50">
+            <i class="ph-bold ph-chat-teardrop-text text-xl"></i>
+            <span class="text-[10px] font-bold uppercase mt-0.5">Text Dan</span>
+        </a>
+        <a href="tel:0477267968" class="flex-1 flex flex-col items-center justify-center text-brand-green active:bg-green-50">
+            <i class="ph-bold ph-phone text-xl"></i>
+            <span class="text-[10px] font-bold uppercase mt-0.5">Call</span>
+        </a>
+    </div>
+
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-end hidden md:flex">
+        <a href="athena_ai.html" class="bg-brand-blue text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center border-2 border-white/20 w-14 h-14" title="Try Athena AI">
+            <i class="ph-fill ph-robot text-2xl"></i>
+        </a>
+        <a href="https://wa.me/61477267968" target="_blank" rel="noopener" class="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center border-2 border-white/20 w-14 h-14" title="Text/WhatsApp">
+            <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+        </a>
+    </div>
+
+    <div id="exitModal" class="fixed inset-0 z-[100] hidden" role="dialog">
+        <div class="fixed inset-0 bg-gray-900/70 backdrop-blur-sm transition-opacity" onclick="closeExit()"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center">
+                <div class="relative transform overflow-hidden rounded-3xl bg-white text-left shadow-2xl transition-all sm:max-w-md border-4 border-brand-green">
+                    <div class="p-8 text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-green text-3xl"><i class="ph-bold ph-hand-palm"></i></div>
+                        <h3 class="text-2xl font-bold text-brand-dark mb-2">Wait! Before you go...</h3>
+                        <p class="text-gray-600 text-sm mb-6">Unsure about calling? Try <strong>Athena AI</strong> first. It fixes 30% of common issues instantly, and it's completely free.</p>
+                        <div class="flex gap-3">
+                            <button onclick="closeExit()" class="flex-1 py-3 font-bold text-gray-500 hover:bg-gray-50 rounded-xl">No thanks</button>
+                            <a href="athena_ai.html" class="flex-1 py-3 bg-brand-green text-white font-bold rounded-xl shadow-lg hover:bg-green-700">Try Athena AI</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-brand-bg border-t border-brand-dark/5 py-12 text-sm text-gray-500 mt-auto mb-16 md:mb-0">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1">
+                <a href="index.html" class="flex items-center gap-2 mb-4">
+                    <img src="logo.png" class="h-8" alt="HaymanTech" onerror="this.style.display='none'">
+                    <span class="font-bold text-gray-400">HAYMANTECH</span>
+                </a>
+                <p class="mb-4 italic">"Hospitality Heart. Engineering Brain."</p>
+                <div class="text-xs mb-4">
+                     <p><strong>ABN:</strong> 93 123 456 789</p> 
+                </div>
+                <div class="flex gap-4 text-xl">
+                    <a href="https://wa.me/61477267968" class="hover:text-green-600 transition" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                    <a href="mailto:dan@haymantech.com.au" class="hover:text-brand-blue transition" aria-label="Email"><i class="ph-fill ph-envelope"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-brand-dark mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="services.html" class="hover:text-brand-green">Services & Pricing</a></li>
+                    <li><a href="about.html" class="hover:text-brand-green">About Dan</a></li>
+                    <li><a href="#remote" onclick="openModal()" class="hover:text-brand-blue">Remote Support</a></li>
+                    <li><a href="athena_ai.html" class="hover:text-brand-green"><i class="ph-bold ph-robot"></i> Athena AI</a></li>
+                    <li><a href="#" onclick="openPrivacy(); return false;" class="hover:text-brand-green text-xs">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                 <h4 class="font-bold text-brand-dark mb-4">Service Area</h4>
+                <ul class="space-y-2 text-xs mb-4">
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-green"></i> Macgregor & Sunnybank</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-green"></i> Mt Gravatt & Wishart</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-green"></i> Eight Mile Plains</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-globe text-brand-blue"></i> Australia-Wide (Remote)</li>
+                </ul>
+                <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm h-32 w-full opacity-80 hover:opacity-100 transition">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.31502931798!2d153.0305!3d-27.5605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b9144c83b40da17%3A0x502a35af3de88e0!2sSunnybank%20QLD!5e0!3m2!1sen!2sau!4v1645400000000!5m2!1sen!2sau" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="HaymanTech Service Area">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="col-span-1 md:col-span-1 bg-white/50 p-4 rounded-xl border border-gray-100 h-fit">
+                <h4 class="font-bold text-brand-dark mb-2">Our Guarantee</h4>
+                <p class="text-[10px] leading-relaxed mb-3">
+                    Our services come with guarantees that cannot be excluded under the Australian Consumer Law. 
+                </p>
+                <div class="flex gap-3 text-2xl opacity-40">
+                    <i class="ph-fill ph-shield-check" title="Insured"></i>
+                    <i class="ph-bold ph-lock-key" title="Secure Data"></i>
+                </div>
+                <p class="text-[10px] mt-2">© 2026 HaymanTech.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="remoteModal" class="fixed inset-0 z-[100] hidden" role="dialog">
+        <div class="fixed inset-0 bg-gray-900/70 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center">
+                <div class="relative transform overflow-hidden rounded-3xl bg-white text-left shadow-2xl transition-all sm:max-w-md border-4 border-brand-blue">
+                    <div class="bg-blue-50 p-6 border-b border-blue-100 text-center">
+                        <h3 class="text-xl font-bold text-brand-dark">Start Remote Support?</h3>
+                        <p class="mt-2 text-sm text-gray-500">I use <strong>RustDesk</strong> for secure connections.</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 flex flex-col gap-2">
+                        <button onclick="window.location.href='https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-x86_64.msi'" class="w-full bg-brand-blue text-white font-bold py-3 rounded-xl">Download Tool</button>
+                        <button onclick="closeModal()" class="w-full text-gray-400 font-bold py-3">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="fixed inset-0 z-[100] hidden" role="dialog">
+        <div class="fixed inset-0 bg-gray-900/70 backdrop-blur-sm transition-opacity" onclick="closePrivacy()"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4">
+                <div class="relative transform rounded-3xl bg-white text-left shadow-2xl transition-all sm:w-full sm:max-w-2xl border-4 border-gray-100 max-h-[80vh] overflow-y-auto">
+                    <div class="p-8">
+                        <h2 class="text-2xl font-bold text-brand-dark mb-4">Privacy Policy</h2>
+                        <div class="prose text-sm text-gray-600 space-y-4">
+                            <p>We collect personal information (Name, Phone) strictly for IT services. We do not sell your data.</p>
+                            <p>Our goods and services come with guarantees that cannot be excluded under the Australian Consumer Law.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-6 py-4 flex flex-row-reverse">
+                        <button onclick="closePrivacy()" class="bg-brand-dark px-6 py-3 text-sm font-bold text-white rounded-xl">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('remoteModal');
+        const exitModal = document.getElementById('exitModal');
+        const privacyModal = document.getElementById('privacyModal');
+        const cookieBanner = document.getElementById('cookieBanner');
+        const body = document.body;
+        
+        function openModal() { modal.classList.remove('hidden'); body.classList.add('modal-open'); }
+        function closeModal() { modal.classList.add('hidden'); body.classList.remove('modal-open'); }
+        
+        function openPrivacy() { privacyModal.classList.remove('hidden'); body.classList.add('modal-open'); }
+        function closePrivacy() { privacyModal.classList.add('hidden'); body.classList.remove('modal-open'); }
+
+        function closeExit() { exitModal.classList.add('hidden'); body.classList.remove('modal-open'); sessionStorage.setItem('exitIntentShown', 'true'); }
+        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+        
+        function acceptCookies() {
+            if(cookieBanner) cookieBanner.classList.remove('show');
+            localStorage.setItem('cookieConsent', 'true');
+        }
+
+        // Show Cookies on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('cookieConsent') && cookieBanner) {
+                setTimeout(() => cookieBanner.classList.add('show'), 1000);
+            }
+        });
+
+        // Exit Intent
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY < 0 && window.innerWidth > 768 && !sessionStorage.getItem('exitIntentShown')) {
+                exitModal.classList.remove('hidden');
+                body.classList.add('modal-open');
+            }
+        });
+
+        // Contact Handler (Text Function)
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('smsName').value;
+            const phone = document.getElementById('smsPhone').value;
+            const msg = document.getElementById('smsMessage').value;
+            const isMobile = /iPhone|Android/i.test(navigator.userAgent);
+            
+            if (isMobile) window.location.href = `sms:0477267968?body=${encodeURIComponent(`Hi Dan, it's ${name}. ${msg}`)}`;
+            else window.open(`https://wa.me/61477267968?text=${encodeURIComponent(`Hi Dan, it's ${name}. ${msg}`)}`, '_blank');
+        }
+
+        // Footer Text Button Handler
+        function triggerText() {
+            const isMobile = /iPhone|Android/i.test(navigator.userAgent);
+            if (isMobile) window.location.href = "sms:0477267968";
+            else window.open("https://wa.me/61477267968", "_blank");
+        }
+    </script>
+</body>
+</html>

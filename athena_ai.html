@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content">
+    <title>Athena AI | Automated Support | HaymanTech</title>
+    
+    <meta name="description" content="Athena AI. Automated IT troubleshooting for WiFi, Printers, Email, and Billing.">
+    <link rel="canonical" href="https://haymantech.com.au/athena_ai.html">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <meta property="og:title" content="Athena AI by HaymanTech">
+    <meta property="og:description" content="I'm Athena. I can fix your tech issues instantly. Try me.">
+    <meta property="og:image" content="https://haymantech.com.au/athena1.png">
+    <meta property="og:url" content="https://haymantech.com.au/athena_ai.html">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Nunito', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            green: '#3a7042', 
+                            blue: '#2563eb',
+                            dark: '#1a1a1a',
+                            cream: '#FFF9F5',
+                        }
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.3s ease-out forwards',
+                        'fade-in': 'fadeIn 0.4s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        slideUp: { '0%': { transform: 'translateY(15px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #FFF9F5; color: #1a1a1a; }
+        
+        /* CLAYMORPHISM */
+        .clay-card {
+            background-color: #FFFFFF;
+            border-radius: 24px;
+            box-shadow: 12px 12px 24px #e6e1dd, inset -8px -8px 16px #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .clay-btn {
+            border-radius: 16px;
+            font-weight: 800;
+            display: flex; align-items: center; gap: 8px;
+            box-shadow: 6px 6px 12px #e6e1dd, inset -2px -2px 6px rgba(255,255,255,0.4);
+            transition: all 0.2s;
+            cursor: pointer;
+            width: 100%; /* Mobile optimized */
+            justify-content: flex-start;
+        }
+        .clay-btn:active { transform: scale(0.96); }
+
+        /* Button Variants */
+        .btn-brand-blue { background-color: #2563eb; color: white; border: 2px solid #fff; }
+        .btn-brand-blue:hover { background-color: #1d4ed8; }
+
+        .btn-brand-green { background-color: #3a7042; color: white; border: 2px solid #fff; }
+        .btn-brand-green:hover { background-color: #2f5c35; }
+
+        .btn-soft { background-color: #F3F4F6; color: #1F2937; border: 2px solid #fff; }
+        .btn-soft:hover { background-color: #E5E7EB; color: #2563eb; }
+
+        .btn-alert { background-color: #FEF2F2; color: #DC2626; border: 2px solid #fff; }
+        .btn-alert:hover { background-color: #FEE2E2; }
+
+        /* Chat Scroll & Typing */
+        .chat-scroll::-webkit-scrollbar { width: 6px; }
+        .chat-scroll::-webkit-scrollbar-thumb { background-color: #CBD5E1; border-radius: 20px; }
+        .typing-dot { animation: typing 1.4s infinite ease-in-out both; }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+    </style>
+</head>
+<body class="h-[100dvh] flex flex-col">
+
+    <nav class="flex-none px-6 py-4 flex justify-between items-center z-50">
+        <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-white shadow-md border-2 border-white overflow-hidden flex items-center justify-center">
+                <img src="logo.png" class="w-full h-full object-cover" alt="Logo">
+            </div>
+            <div>
+                <span class="block font-black text-brand-dark text-lg leading-none">HaymanTech</span>
+                <span class="text-[10px] font-bold text-brand-green uppercase tracking-wider">Automated Support</span>
+            </div>
+        </a>
+        <div class="flex gap-3">
+             <a href="index.html" class="hidden md:flex clay-btn btn-soft px-4 py-2 text-xs w-auto">Exit</a>
+             <button onclick="resetAthena()" class="clay-btn btn-alert px-4 py-2 text-xs w-auto">
+                <i class="ph-bold ph-arrow-counter-clockwise"></i> Restart
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex-1 flex flex-col container mx-auto max-w-2xl px-4 pb-4 h-full overflow-hidden relative">
+        
+        <div class="flex-none clay-card p-5 mb-4 flex items-center gap-5 z-20">
+            <div class="relative group">
+                <div class="w-16 h-16 rounded-full overflow-hidden border-4 border-white shadow-sm">
+                    <img src="athena1.png" class="w-full h-full object-cover" alt="Athena AI" onerror="this.src='https://placehold.co/100x100/3a7042/ffffff?text=A'">
+                </div>
+                <div class="absolute bottom-0 right-0 w-5 h-5 bg-[#4ADE80] border-2 border-white rounded-full animate-pulse-slow"></div>
+            </div>
+            <div>
+                <h1 class="font-black text-brand-dark text-xl flex items-center gap-2">
+                    Athena AI <span class="bg-brand-blue/10 text-brand-blue text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider font-extrabold border border-brand-blue/20">v3.2</span>
+                </h1>
+                <p class="text-xs font-bold text-gray-400 mt-1">"I'm here to make tech cozy again."</p>
+            </div>
+        </div>
+
+        <div id="chat-history" class="flex-1 overflow-y-auto chat-scroll space-y-4 px-2 pb-6 pt-2"></div>
+
+        <div class="flex-none pt-4 pb-2 z-30">
+            
+            <div id="typing-indicator" class="hidden ml-4 mb-4 bg-white border border-gray-100 px-4 py-3 rounded-2xl rounded-bl-none shadow-sm flex gap-1 items-center w-fit">
+                <span class="w-2 h-2 bg-brand-green rounded-full typing-dot"></span>
+                <span class="w-2 h-2 bg-brand-green rounded-full typing-dot"></span>
+                <span class="w-2 h-2 bg-brand-green rounded-full typing-dot"></span>
+            </div>
+
+            <div id="options-container" class="min-h-[60px] flex flex-col md:flex-row flex-wrap gap-3 justify-center items-center">
+                <button onclick="startFlow()" class="clay-btn btn-brand-green px-8 py-4 text-sm animate-slide-up w-auto">
+                    Start Troubleshooting <i class="ph-bold ph-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="mt-4 w-full px-1 flex justify-center">
+                <a href="tel:0477267968" class="group flex items-center justify-center gap-2 w-auto bg-brand-blue border border-brand-blue text-white font-bold py-2 px-6 rounded-xl shadow-md hover:shadow-lg hover:bg-blue-600 hover:border-blue-600 active:scale-95 transition-all text-xs uppercase tracking-wider">
+                    <div class="bg-white/20 p-1 rounded-full group-hover:bg-white/30 transition-colors">
+                        <i class="ph-fill ph-phone-call text-lg animate-pulse text-white"></i>
+                    </div>
+                    Emergency? Call Dan
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <section class="container mx-auto max-w-2xl px-6 py-8 text-gray-400 text-xs border-t border-gray-200 mt-8 hidden md:block">
+        <h2 class="font-bold text-gray-600 mb-2">System Capabilities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+                <h3 class="font-bold text-brand-green">Network & DNS</h3>
+                <p>Diagnoses APIPA (169.254) errors and performs local DNS flushes.</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-brand-green">Auth & Billing</h3>
+                <p>Simulates gateway checks and guides password resets via logic trees.</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-brand-green">Hardware</h3>
+                <p>Identifies physical faults in printers and routers for escalation.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const SESSION_KEY = 'athena_session_v13'; 
+        const TIMER_START_KEY = 'athena_timer_start';
+        
+        // ==========================================
+        //  DECISION TREE
+        // ==========================================
+        const DECISION_TREE = {
+            'START': {
+                message: "Woof! I'm Athena. 🐾\n\nI can help you fix technical problems or answer questions about your account. **What are we looking at today?**",
+                options: [
+                    { label: "No Internet / WiFi", icon: "ph-wifi-slash", next: "NET_INIT", style: "alert" },
+                    { label: "Printer Issue", icon: "ph-printer", next: "PRINT_START", style: "alert" }, 
+                    { label: "Email / Login", icon: "ph-lock-key", next: "AUTH_INIT", style: "alert" },
+                    { label: "Billing & Payments", icon: "ph-credit-card", next: "BILL_INIT", style: "alert" },
+                    { label: "Website / 404", icon: "ph-browser", next: "WEB_INIT", style: "alert" }
+                ]
+            },
+            
+            // --- NETWORK ---
+            'NET_INIT': {
+                message: "I'll help you get back online. First, I need to check the status of the local connection logic.",
+                type: 'process',
+                duration: 2, 
+                loadingText: "Checking Network Adapters...",
+                next: "NET_START"
+            },
+            'NET_START': {
+                message: "Okay, diagnostics done. Let's look at the WiFi icon on your screen.\n\n**What do you see?**",
+                options: [
+                    { label: "Globe / Warning Icon", icon: "ph-warning", next: "NET_CheckIP", style: "alert" },
+                    { label: "No Icon / Red 'X'", icon: "ph-x-circle", next: "NET_HardwareFail", style: "alert" },
+                    { label: "Connected but Slow", icon: "ph-turtle", next: "NET_Speed", style: "alert" }
+                ]
+            },
+            'NET_Speed': {
+                message: "Slow internet is usually bandwidth congestion or bad signal. \n\nTry running a speed test at **Fast.com**.",
+                options: [
+                    { label: "Open Fast.com", icon: "ph-gauge", action: "link:https://fast.com", style: "soft" },
+                    { label: "It's still too slow", icon: "ph-thumbs-down", next: "ESCALATE_ISP", style: "alert" }
+                ]
+            },
+            'NET_HardwareFail': {
+                message: "A Red 'X' usually means the WiFi card is physically off. Check for a physical switch or 'Airplane Mode' key (F12 or PrtScrn).",
+                options: [
+                    { label: "Found a switch! Fixed.", icon: "ph-check", next: "VERIFY_FIX", style: "blue" },
+                    { label: "Still broken", icon: "ph-x", next: "ESCALATE_HARDWARE", style: "alert" }
+                ]
+            },
+            'NET_CheckIP': {
+                message: "A warning icon means the router is confused. Check your IP Address (Settings -> Network).\n\nDoes it start with **169.254**?",
+                options: [
+                    { label: "Yes (169.254...)", icon: "ph-warning-octagon", next: "NET_APIPA_Fix", style: "alert" },
+                    { label: "No (192.168...)", icon: "ph-check-circle", next: "NET_DNS_Check", style: "alert" }
+                ]
+            },
+            'NET_APIPA_Fix': {
+                message: "That's an APIPA error. The Router isn't assigning you an address. **You must reboot the ROUTER (unplug for 30s), not the PC.**",
+                type: 'timer',
+                duration: 45,
+                next: "VERIFY_FIX"
+            },
+            'NET_DNS_Check': {
+                message: "Your local link is good. Try opening **1.1.1.1** in your browser. Does that page load?",
+                options: [
+                    { label: "Yes, 1.1.1.1 Works", icon: "ph-globe", next: "NET_FlushDNS", style: "blue" },
+                    { label: "No, nothing works", icon: "ph-x", next: "ESCALATE_ISP", style: "alert" }
+                ]
+            },
+            'NET_FlushDNS': {
+                message: "It looks like a DNS caching error. Open Command Prompt and type: `ipconfig /flushdns`",
+                options: [
+                    { label: "Done. It works!", icon: "ph-check", next: "VERIFY_FIX", style: "blue" },
+                    { label: "Too hard / Didn't work", icon: "ph-user", next: "ESCALATE_REMOTE", style: "alert" }
+                ]
+            },
+
+            // --- PRINTER ---
+            'PRINT_START': {
+                message: "Printers can be stubborn. Is this printer connected via USB cable or WiFi?",
+                options: [
+                    { label: "USB Cable", icon: "ph-plug", next: "PRINT_USB", style: "alert" },
+                    { label: "WiFi / Network", icon: "ph-wifi-high", next: "PRINT_Network", style: "alert" }
+                ]
+            },
+            'PRINT_USB': {
+                message: "Unplug the USB cable from both ends. Wait 10 seconds. Plug it back in firmly. \n\n**Did the computer make a 'Da-ding' sound?**",
+                options: [
+                    { label: "Yes, made a sound", icon: "ph-speaker-high", next: "VERIFY_FIX", style: "blue" },
+                    { label: "No sound / Silence", icon: "ph-x", next: "PRINT_Spooler", style: "alert" }
+                ]
+            },
+            'PRINT_Network': {
+                message: "Go to Printer Properties -> **Ports**. Is the checked port described as a **WSD Port**?",
+                options: [
+                    { label: "Yes, WSD Port", icon: "ph-check", next: "PRINT_WSD_Fix", style: "alert" },
+                    { label: "No, TCP/IP Port", icon: "ph-x", next: "PRINT_Spooler", style: "alert" }
+                ]
+            },
+            'PRINT_WSD_Fix': {
+                message: "WSD ports are unreliable. Add a new 'Standard TCP/IP Port' using the printer's IP address.",
+                options: [
+                    { label: "I did that, it's printing", icon: "ph-printer", next: "VERIFY_FIX", style: "blue" },
+                    { label: "I need help", icon: "ph-life-buoy", next: "ESCALATE_REMOTE", style: "alert" }
+                ]
+            },
+            'PRINT_Spooler': {
+                message: "The Print Spooler service might be stuck. \n\n1. Press **Win+R** \n2. Type `services.msc` \n3. Right-click **Print Spooler** -> **Restart**.",
+                options: [
+                    { label: "Restarted Service", icon: "ph-arrows-clockwise", next: "VERIFY_FIX", style: "alert" },
+                    { label: "Too Complicated", icon: "ph-warning", next: "ESCALATE_REMOTE", style: "alert" }
+                ]
+            },
+
+            // --- AUTH & EMAIL ---
+            'AUTH_INIT': {
+                message: "Login issues are frustrating. Is this for an Email account (Outlook/Gmail) or a Website Login?",
+                options: [
+                    { label: "Email / Outlook", icon: "ph-envelope", next: "EMAIL_START", style: "alert" },
+                    { label: "Website / SaaS", icon: "ph-globe", next: "WEB_LOGIN_CHECK", style: "alert" }
+                ]
+            },
+            'EMAIL_START': {
+                message: "Is the password rejected on Outlook/iPhone, but works fine on the Website?",
+                options: [
+                    { label: "Yes, rejected on App", icon: "ph-warning", next: "EMAIL_MFA_Check", style: "alert" },
+                    { label: "No, works nowhere", icon: "ph-lock-key", next: "EMAIL_Reset_Precheck", style: "alert" }
+                ]
+            },
+            'EMAIL_Reset_Precheck': {
+                message: "Before we reset, let's double-check. \n\n1. Is **Caps Lock** on? \n2. Did your browser auto-fill an old password?",
+                options: [
+                    { label: "Checked. Still fails.", icon: "ph-x", next: "EMAIL_Reset", style: "alert" },
+                    { label: "Oops, Caps Lock was on.", icon: "ph-check", next: "VERIFY_FIX", style: "blue" }
+                ]
+            },
+            'EMAIL_Reset': {
+                message: "Okay, we need to reset it. Who is your email provider?",
+                options: [
+                    { label: "Google / Gmail", icon: "ph-google-logo", action: "link:https://accounts.google.com/signin/recovery", style: "soft" },
+                    { label: "Microsoft / Outlook", icon: "ph-microsoft-logo", action: "link:https://account.live.com/password/reset", style: "soft" },
+                    { label: "Other / Unsure", icon: "ph-question", next: "ESCALATE_REMOTE", style: "soft" }
+                ]
+            },
+            'EMAIL_MFA_Check': {
+                message: "Do you have Two-Factor Auth (2FA) turned on? If so, your normal password **will not work** in older apps. You need an **App Password**.",
+                options: [
+                    { label: "Generate App Password", icon: "ph-key", next: "EMAIL_AppPass_Explain", style: "alert" },
+                    { label: "I don't have 2FA", icon: "ph-x", next: "ESCALATE_REMOTE", style: "alert" }
+                ]
+            },
+            'EMAIL_AppPass_Explain': {
+                message: "Go to Account Security -> App Passwords. Generate one and use THAT code in Outlook instead of your main password.",
+                options: [
+                    { label: "It connected!", icon: "ph-check", next: "VERIFY_FIX", style: "blue" },
+                    { label: "Still fails", icon: "ph-x", next: "ESCALATE_REMOTE", style: "alert" }
+                ]
+            },
+
+            // --- BILLING ---
+            'BILL_INIT': {
+                message: "I can help clarify billing errors. Are you seeing a **'Transaction Declined'** message, or is the payment page itself broken?",
+                options: [
+                    { label: "Card Declined", icon: "ph-credit-card", next: "BILL_DECLINE", style: "alert" },
+                    { label: "Page Broken / Error 500", icon: "ph-warning", next: "BILL_GATEWAY_CHECK", style: "alert" }
+                ]
+            },
+            'BILL_DECLINE': {
+                message: "Declines usually happen for safety. \n\n1. Check the **Expiry Date** and **CVV**. \n2. Are you purchasing from a new location (Fraud Lock)?",
+                options: [
+                    { label: "Details are correct", icon: "ph-check", next: "BILL_SOFT_DECLINE", style: "alert" },
+                    { label: "I'll try another card", icon: "ph-cards", next: "VERIFY_FIX", style: "alert" }
+                ]
+            },
+            'BILL_SOFT_DECLINE': {
+                message: "If the details are correct, this is likely a 'Soft Decline' by your bank. \n\n**Please do not try again immediately.** Wait 5 minutes or call your bank to authorize the charge.",
+                options: [
+                    { label: "Understood", icon: "ph-check", next: "START", style: "soft" }
+                ]
+            },
+            'BILL_GATEWAY_CHECK': {
+                message: "I'm checking the status of our payment processors (Stripe/PayPal)...",
+                type: 'process',
+                duration: 3,
+                loadingText: "Querying API Status...",
+                next: "BILL_GATEWAY_RESULT"
+            },
+            'BILL_GATEWAY_RESULT': {
+                message: "The payment systems are **Online**. This is likely a browser cache issue on your end. Please try clearing your cache or using Incognito mode.",
+                options: [
+                    { label: "I'll try Incognito", icon: "ph-mask-happy", next: "VERIFY_FIX", style: "alert" },
+                    { label: "Still failing", icon: "ph-x", next: "ESCALATE_REMOTE", style: "alert" }
+                ]
+            },
+
+            // --- WEB / 404 ---
+            'WEB_INIT': {
+                message: "Are you seeing a **404 Not Found** error, or is the website just loading very slowly?",
+                options: [
+                    { label: "404 Not Found", icon: "ph-warning-circle", next: "WEB_404", style: "alert" },
+                    { label: "Slow / White Screen", icon: "ph-spinner", next: "WEB_SLOW", style: "alert" }
+                ]
+            },
+            'WEB_404': {
+                message: "A 404 means the page might have moved. \n\n1. Check the URL for typos. \n2. Try pressing **Ctrl + F5** to force a hard refresh.",
+                options: [
+                    { label: "It loaded now!", icon: "ph-check", next: "VERIFY_FIX", style: "blue" },
+                    { label: "Still 404", icon: "ph-x", next: "ESCALATE_REMOTE", style: "alert" }
+                ]
+            },
+            'WEB_SLOW': {
+                message: "Let's rule out your connection. Can you load **Google.com** quickly?",
+                options: [
+                    { label: "Yes, Google is fast", icon: "ph-check", next: "WEB_CACHE", style: "alert" },
+                    { label: "No, everything is slow", icon: "ph-turtle", next: "NET_Speed", style: "alert" }
+                ]
+            },
+            'WEB_CACHE': {
+                message: "If other sites work, it's a cache conflict. Please **Clear your Browser Cache** (Settings -> Privacy -> Clear Data).",
+                options: [
+                    { label: "Clearing now...", icon: "ph-trash", next: "VERIFY_FIX", style: "alert" }
+                ]
+            },
+
+            // --- SYSTEM & VERIFICATION ---
+            'VERIFY_FIX': {
+                message: "Wait! Before we celebrate... ✋\n\nPlease **double-check** the problem is actually gone.\n\nLoad a new webpage, print a test page, or send an email. **Is it working?**",
+                options: [
+                    { label: "Yes! It works perfectly.", icon: "ph-confetti", next: "SUCCESS", style: "blue" },
+                    { label: "No, still broken.", icon: "ph-thumbs-down", next: "ESCALATE_REMOTE", style: "alert" }
+                ]
+            },
+            
+            'SUCCESS': {
+                message: "I'm a good dog! 🐶 \n\nI fixed your problem for free! Since I saved you $110, would you mind helping Dan?",
+                effect: 'confetti',
+                options: [
+                    { label: "Leave a Review ⭐", icon: "ph-star", action: "link:https://g.page/haymantech", style: "blue" },
+                    { label: "Book Security Audit", icon: "ph-shield-check", action: "link:services.html#business", style: "soft" },
+                    { label: "Start Over", icon: "ph-arrow-counter-clockwise", next: "START", style: "soft" }
+                ]
+            },
+            
+            // --- ESCALATIONS ---
+            'ESCALATE_REMOTE': {
+                message: "I couldn't solve it automatically. \n\n**Please Call Dan.** He can help over the phone or fix it remotely.",
+                options: [
+                    { label: "Call Dan Now (0477 267 968)", icon: "ph-phone-call", action: "link:tel:0477267968", style: "blue" },
+                    { label: "Book Remote Session", icon: "ph-laptop", action: "link:services.html#remote", style: "soft" }
+                ]
+            },
+            'ESCALATE_ISP': {
+                message: "This looks like an ISP outage (NBN). Check your NBN status page on your phone. If you are unsure, **Call Dan**.",
+                options: [
+                     { label: "Call Dan (Recommended)", icon: "ph-phone-call", action: "link:tel:0477267968", style: "blue" },
+                    { label: "Check NBN Outages", icon: "ph-globe", action: "link:https://www.nbnco.com.au", style: "soft" }
+                ]
+            },
+             'ESCALATE_HARDWARE': {
+                message: "I suspect a hardware failure (dead card or cable). I recommend a home visit.",
+                options: [
+                    { label: "Call Dan for Home Visit", icon: "ph-phone", action: "link:tel:0477267968", style: "blue" },
+                    { label: "View Pricing", icon: "ph-currency-dollar", action: "link:services.html", style: "soft" }
+                ]
+            }
+        };
+
+        // --- ENGINE ---
+        const chatContainer = document.getElementById('chat-history');
+        const optionsContainer = document.getElementById('options-container');
+        const typingIndicator = document.getElementById('typing-indicator');
+
+        function startFlow() { transitionTo('START'); }
+        function resetAthena() { 
+            localStorage.removeItem(SESSION_KEY); 
+            localStorage.removeItem(TIMER_START_KEY);
+            location.reload(); 
+        }
+
+        function transitionTo(stateId, skipTyping = false) {
+            // Safety Check
+            const node = DECISION_TREE[stateId] || DECISION_TREE['ESCALATE_REMOTE'];
+            localStorage.setItem(SESSION_KEY, stateId);
+            
+            if (node.type !== 'timer' && node.type !== 'process') {
+                localStorage.removeItem(TIMER_START_KEY);
+            }
+
+            optionsContainer.innerHTML = ''; 
+
+            if (!skipTyping) {
+                typingIndicator.classList.remove('hidden');
+                setTimeout(() => {
+                    typingIndicator.classList.add('hidden');
+                    renderNode(node);
+                }, 800);
+            } else {
+                renderNode(node);
+            }
+        }
+
+        function renderNode(node) {
+            appendMessage("Athena", node.message);
+            if (node.effect === 'confetti') confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            
+            // Logic Handler
+            if (node.type === 'timer') {
+                renderTimer(node.duration, node.next);
+                return;
+            }
+            if (node.type === 'process') {
+                renderProcess(node.duration, node.loadingText, node.next);
+                return;
+            }
+
+            if (node.options) {
+                node.options.forEach(opt => {
+                    const btn = document.createElement('button');
+                    let btnClass = "clay-btn px-6 py-3 text-sm animate-slide-up w-full md:w-auto ";
+                    
+                    if (opt.style === 'blue') btnClass += "btn-brand-blue ";
+                    else if (opt.style === 'green') btnClass += "btn-brand-green ";
+                    else if (opt.style === 'alert') btnClass += "btn-alert ";
+                    else btnClass += "btn-soft ";
+
+                    btn.className = btnClass;
+                    btn.innerHTML = `<i class="ph-bold ${opt.icon}"></i> ${opt.label}`;
+
+                    btn.onclick = () => {
+                        // Pass label as message; STYLE IS IGNORED for chat color now
+                        appendMessage("User", opt.label, opt.style);
+                        if (opt.action && opt.action.startsWith('link:')) window.location.href = opt.action.replace('link:', '');
+                        else if (opt.next) transitionTo(opt.next);
+                    };
+                    optionsContainer.appendChild(btn);
+                });
+            }
+        }
+
+        function appendMessage(sender, text, style = 'blue') {
+            const div = document.createElement('div');
+            div.className = "flex gap-3 animate-fade-in mb-4 w-full";
+            const formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+
+            if (sender === "Athena") {
+                // ATHENA: Green Bubble
+                div.innerHTML = `
+                    <div class="flex-shrink-0 flex flex-col items-center justify-end">
+                        <div class="w-8 h-8 rounded-full overflow-hidden border border-gray-200 shadow-sm bg-white">
+                            <img src="athena1.png" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/3a7042/ffffff?text=A'">
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-start max-w-[85%]">
+                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider ml-1 mb-1">Athena AI</span>
+                        <div class="bg-brand-green text-white border border-brand-green rounded-2xl rounded-tl-none px-5 py-3 text-sm shadow-sm leading-relaxed">
+                            ${formattedText}
+                        </div>
+                    </div>`;
+            } else {
+                // USER: STICT RED by default, BLUE only for success
+                div.className += " flex-row-reverse";
+                
+                // 1. Force DEFAULT to RED (bg-red-500)
+                let bubbleClass = "bg-red-500 text-white"; 
+
+                // 2. Define Success Phrases
+                const successPhrases = [
+                    "works perfectly", "Fixed", "connected!", 
+                    "loaded now", "It works", "printing", 
+                    "made a sound", "Caps Lock was on", "1.1.1.1 Works", "Google is fast"
+                ];
+
+                // 3. Override to Blue ONLY if success
+                if (successPhrases.some(phrase => text.includes(phrase))) {
+                    bubbleClass = "bg-brand-blue text-white";
+                }
+
+                div.innerHTML = `
+                    <div class="flex flex-col items-end max-w-[85%]">
+                        <div class="${bubbleClass} rounded-2xl rounded-tr-none px-5 py-3 text-sm shadow-md leading-relaxed text-left font-medium">
+                            ${formattedText}
+                        </div>
+                    </div>`;
+            }
+            chatContainer.appendChild(div);
+            setTimeout(() => { chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: 'smooth' }); }, 100);
+        }
+
+        // --- SIMULATED PROCESS ---
+        function renderProcess(durationSeconds, text, nextState) {
+             const processContainer = document.createElement('div');
+            processContainer.className = "w-full max-w-sm flex flex-col items-center justify-center p-4 animate-slide-up mb-4 bg-white rounded-xl shadow-sm border border-gray-100 mx-auto";
+            processContainer.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <i class="ph-bold ph-gear animate-spin text-brand-blue text-xl"></i>
+                    <span class="text-sm font-bold text-gray-600">${text}</span>
+                </div>
+            `;
+            optionsContainer.appendChild(processContainer);
+
+            setTimeout(() => {
+                optionsContainer.innerHTML = '';
+                transitionTo(nextState);
+            }, durationSeconds * 1000);
+        }
+
+        // --- TIMER ---
+        function renderTimer(durationSeconds, nextState) {
+            let start = localStorage.getItem(TIMER_START_KEY);
+            if (!start) {
+                start = Date.now();
+                localStorage.setItem(TIMER_START_KEY, start);
+            }
+            
+            const now = Date.now();
+            const elapsed = Math.floor((now - start) / 1000);
+            let remaining = Math.max(0, durationSeconds - elapsed);
+
+            const timerContainer = document.createElement('div');
+            timerContainer.className = "w-full flex flex-col items-center justify-center p-6 clay-card animate-slide-up mb-4";
+            timerContainer.innerHTML = `
+                <div class="text-4xl font-black text-brand-green mb-2 font-mono" id="countdown">00:${remaining.toString().padStart(2, '0')}</div>
+                <div class="w-full bg-gray-100 rounded-full h-3 max-w-xs overflow-hidden">
+                    <div class="bg-brand-green h-full transition-all duration-1000 ease-linear" id="progress" style="width: ${(remaining/durationSeconds)*100}%"></div>
+                </div>
+                <p class="text-xs font-bold text-gray-400 mt-3">Rebooting Router...</p>
+            `;
+            optionsContainer.appendChild(timerContainer);
+
+            const interval = setInterval(() => {
+                remaining--;
+                const countEl = document.getElementById('countdown');
+                const progEl = document.getElementById('progress');
+                
+                if(countEl) countEl.innerText = `00:${Math.max(0, remaining).toString().padStart(2, '0')}`;
+                if(progEl) progEl.style.width = `${(Math.max(0, remaining) / durationSeconds) * 100}%`;
+
+                if (remaining <= 0) {
+                    clearInterval(interval);
+                    localStorage.removeItem(TIMER_START_KEY); 
+                    optionsContainer.innerHTML = ''; 
+                    const btn = document.createElement('button');
+                    btn.className = "clay-btn btn-brand-green px-8 py-4 animate-slide-up";
+                    btn.innerHTML = `<i class="ph-bold ph-check"></i> Done. Next Step.`;
+                    btn.onclick = () => transitionTo(nextState);
+                    optionsContainer.appendChild(btn);
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

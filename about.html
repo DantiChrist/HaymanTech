@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Dan & Athena | Local IT Support Brisbane | HaymanTech</title>
+    
+    <meta name="description" content="The story behind HaymanTech. Dedicated to loyal service, inspired by Athena. 15 years hospitality experience meets enterprise engineering.">
+    <link rel="canonical" href="https://haymantech.com.au/about.html">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <meta property="og:title" content="About HaymanTech: Dan & Athena">
+    <meta property="og:description" content="Hospitality Heart. Engineering Brain. Inspired by loyalty. The story behind Brisbane's most patient IT support.">
+    <meta property="og:image" content="https://haymantech.com.au/AthenaDan.png">
+    <meta property="og:url" content="https://haymantech.com.au/about.html">
+    <meta property="og:type" content="profile">
+
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { green: '#3a7042', dark: '#1a1a1a', blue: '#2563eb', bg: '#f2efe6' }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Dan Hayman",
+        "jobTitle": "Lead Technician",
+        "image": "https://haymantech.com.au/AthenaDan.png",
+        "affiliation": {
+            "@type": "Organization",
+            "name": "HaymanTech",
+            "logo": "https://haymantech.com.au/logo.png"
+        },
+        "description": "Enterprise Engineer turned local IT support provider, combining 15 years of hospitality experience with technical expertise."
+      }
+    }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .modal-open { overflow: hidden; }
+        #remoteModal.hidden, #privacyModal.hidden { opacity: 0; pointer-events: none; }
+        #remoteModal:not(.hidden), #privacyModal:not(.hidden) { opacity: 1; pointer-events: auto; }
+        #mobileMenu.hidden { display: none; }
+    </style>
+</head>
+<body class="bg-brand-bg text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <nav class="sticky top-0 z-50 bg-brand-bg/95 backdrop-blur-sm border-b border-gray-200/50 shadow-sm">
+        <div class="container mx-auto px-4 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="logo.png" width="40" height="40" class="h-10 w-auto rounded-full" alt="HaymanTech Logo">
+                <div class="hidden sm:block leading-none">
+                    <span class="block font-bold text-brand-dark text-lg">HaymanTech</span>
+                    <span class="block text-xs font-bold text-brand-green uppercase tracking-wide">Keeping It Simple</span>
+                </div>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-6">
+                <a href="index.html" class="text-gray-600 hover:text-brand-green font-bold text-sm transition">Home</a>
+                <a href="services.html" class="text-gray-600 hover:text-brand-green font-bold text-sm transition">Services & Pricing</a>
+                <a href="about.html" class="text-brand-green font-bold text-sm" aria-current="page">About & FAQ</a>
+                <a href="athena_ai.html" class="text-brand-blue font-bold text-sm border border-brand-blue/20 px-3 py-1 rounded-full hover:bg-brand-blue hover:text-white transition">
+                   <i class="ph-bold ph-robot"></i> Athena AI
+                </a>
+                
+                <button onclick="openModal()" class="text-brand-blue hover:underline flex items-center gap-1 cursor-pointer focus:outline-none font-bold text-sm">
+                    <i class="ph-bold ph-laptop"></i> Remote Help
+                </button>
+
+                <a href="tel:0477267968" class="bg-brand-green text-white px-5 py-2.5 rounded-lg hover:bg-green-800 transition flex items-center gap-2 shadow-lg animate-pulse-slow">
+                    <i class="ph-fill ph-phone-call"></i>
+                    <div class="flex flex-col leading-none text-left">
+                        <span class="text-[10px] uppercase font-bold text-green-100">A Call is Free</span>
+                        <span class="font-bold text-sm">0477 267 968</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="md:hidden flex items-center gap-4">
+                <a href="tel:0477267968" class="bg-brand-green text-white px-3 py-2 rounded-lg text-sm font-bold shadow-sm">
+                    <i class="ph-bold ph-phone"></i> Call
+                </a>
+                <button onclick="toggleMobileMenu()" class="text-brand-dark text-2xl focus:outline-none">
+                    <i class="ph-bold ph-list"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0 z-50">
+            <div class="flex flex-col p-4 space-y-4 text-center font-bold text-gray-600">
+                <a href="index.html" class="hover:text-brand-green py-2 border-b border-gray-50">Home</a>
+                <a href="services.html" class="hover:text-brand-green py-2 border-b border-gray-50">Services & Pricing</a>
+                <a href="about.html" class="text-brand-green py-2 border-b border-gray-50">About & FAQ</a>
+                <a href="athena_ai.html" class="text-brand-blue py-2 border-b border-gray-50"><i class="ph-bold ph-robot"></i> Athena AI</a>
+                <button onclick="openModal(); toggleMobileMenu()" class="text-brand-blue hover:underline py-2 flex items-center justify-center gap-2">
+                    <i class="ph-bold ph-laptop"></i> Remote Help
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-16">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="flex flex-col md:flex-row gap-12 items-start mb-20">
+                <div class="w-full md:w-1/2 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-green to-brand-dark rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <img src="AthenaDan.png" class="relative rounded-[2rem] shadow-2xl w-full border-4 border-white object-cover" 
+                         alt="Dan Hayman and Athena the dog - Local IT Support Team" loading="eager">
+                    <div class="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-white/50">
+                        <p class="text-xs font-bold text-brand-dark">Dan & Athena</p>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 space-y-6">
+                    <h1 class="text-4xl font-extrabold text-brand-dark leading-tight">
+                        Built on Loyalty.<br>
+                        <span class="text-brand-green">Inspired by Athena.</span>
+                    </h1>
+                    
+                    <div class="prose text-gray-600 leading-relaxed space-y-4">
+                        <p class="text-lg font-medium text-gray-800">
+                            HaymanTech isn't just an IT company. It is a tribute to the most loyal companion I ever knew.
+                        </p>
+                        <p>
+                            For 9 years, Athena was my shadow. She saw me through career changes, late nights studying engineering, and the ups and downs of life. She didn't care about servers or code—she cared about <strong>showing up</strong>.
+                        </p>
+                        <p>
+                            When I decided to start this business, I looked at the IT industry and saw a lot of complexity, but very little connection. I wanted to build something that reflected the values Athena taught me: <strong>Unwavering loyalty, patience, and being there when it matters.</strong>
+                        </p>
+                        <p>
+                            That is why she is in the logo. She reminds me every day that my job isn't just to fix computers—it's to be a reliable companion to the people who use them.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 flex gap-4 flex-wrap">
+                        <div class="flex items-center gap-2 text-sm font-bold text-brand-dark bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+                            <i class="ph-fill ph-heart text-red-500"></i> Hospitality Heart
+                        </div>
+                        <div class="flex items-center gap-2 text-sm font-bold text-brand-dark bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+                            <i class="ph-fill ph-gear text-brand-blue"></i> Engineering Brain
+                        </div>
+                         <div class="flex items-center gap-2 text-sm font-bold text-brand-dark bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+                            <i class="ph-fill ph-shield-check text-green-600"></i> Police Checked
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-24">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl font-bold text-brand-dark flex items-center justify-center gap-2">
+                        <i class="ph-fill ph-paw-print text-brand-green"></i> Athena's Gallery
+                    </h2>
+                    <p class="text-gray-500 text-sm mt-2">The face behind the brand.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                        <div class="aspect-square overflow-hidden rounded-xl bg-gray-100 mb-3 relative">
+                            <img src="Athena2.png" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Athena Playing" loading="lazy">
+                        </div>
+                        <p class="text-center text-xs font-bold text-gray-500 uppercase tracking-wide">Always Ready</p>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 md:-mt-8">
+                        <div class="aspect-square overflow-hidden rounded-xl bg-gray-100 mb-3 relative">
+                            <img src="Athena4.png" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Athena Yawning" loading="lazy">
+                        </div>
+                        <p class="text-center text-xs font-bold text-gray-500 uppercase tracking-wide">The "Boss"</p>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                        <div class="aspect-square overflow-hidden rounded-xl bg-gray-100 mb-3 relative">
+                            <img src="athena3.png" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Athena in the Park" loading="lazy">
+                        </div>
+                        <p class="text-center text-xs font-bold text-gray-500 uppercase tracking-wide">Loyal Companion</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-brand-dark rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-5">
+                    <i class="ph-fill ph-user-gear text-9xl"></i>
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold mb-4">About Me (The Human)</h2>
+                        <div class="space-y-4 text-gray-300 text-sm leading-relaxed">
+                            <p>
+                                Before IT, I spent 15 years managing busy hotels like <strong>The Rock Hotel</strong> and <strong>Brew and Bite Collective</strong>. I learned that technical skills are useless if you can't communicate with people.
+                            </p>
+                            <p>
+                                I later pivoted to Enterprise Engineering, working with major MSPs to build secure networks and manage cloud migrations. I loved the tech, but I missed the human connection of hospitality.
+                            </p>
+                            <p>
+                                HaymanTech is the best of both worlds. I bring enterprise-grade tools to your home or small business, but I deliver them with the warmth of a local friend.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="shrink-0">
+                        <a href="index.html#ticket" class="bg-brand-green text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-green-600 transition flex items-center gap-2">
+                            Work With Dan <i class="ph-bold ph-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="bg-brand-bg border-t border-brand-dark/5 py-12 text-sm text-gray-500 mt-auto">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1">
+                <a href="index.html" class="flex items-center gap-2 mb-4">
+                    <img src="logo.png" class="h-8" alt="HaymanTech">
+                    <span class="font-bold text-gray-400">HAYMANTECH</span>
+                </a>
+                <p class="mb-4 italic">"Hospitality Heart. Engineering Brain."</p>
+                <div class="text-xs mb-4">
+                     <p><strong>ABN:</strong> 93 123 456 789</p> 
+                </div>
+                <div class="flex gap-4 text-xl">
+                    <a href="https://wa.me/61477267968" class="hover:text-green-600 transition" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                    <a href="mailto:dan@haymantech.com.au" class="hover:text-brand-blue transition" aria-label="Email"><i class="ph-fill ph-envelope"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-brand-dark mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="services.html" class="hover:text-brand-green">Services & Pricing</a></li>
+                    <li><a href="about.html" class="hover:text-brand-green">About Dan</a></li>
+                    <li><a href="#remote" onclick="openModal()" class="hover:text-brand-blue">Remote Support</a></li>
+                    <li><a href="athena_ai.html" class="hover:text-brand-green"><i class="ph-bold ph-robot"></i> Athena AI</a></li>
+                    <li><a href="#" onclick="openPrivacy(); return false;" class="hover:text-brand-green text-xs">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                 <h4 class="font-bold text-brand-dark mb-4">Service Area</h4>
+                <ul class="space-y-2 text-xs mb-4">
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-green"></i> Macgregor & Sunnybank</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-green"></i> Mt Gravatt & Wishart</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-green"></i> Eight Mile Plains</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-green"></i> Brisbane CBD & South Brisbane</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-globe text-brand-blue"></i> Australia-Wide (Remote)</li>
+                </ul>
+                <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm h-32 w-full opacity-80 hover:opacity-100 transition">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14144.13523297746!2d153.06456725!3d-27.5627678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b9144c9b365511b%3A0x502a35af3de8860!2sMacgregor%20QLD%204109!5e0!3m2!1sen!2sau!4v1700000000000!5m2!1sen!2sau" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="HaymanTech Service Area">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="col-span-1 md:col-span-1 bg-white/50 p-4 rounded-xl border border-gray-100 h-fit">
+                <h4 class="font-bold text-brand-dark mb-2">Our Guarantee</h4>
+                <p class="text-[10px] leading-relaxed mb-3">
+                    Our services come with guarantees that cannot be excluded under the Australian Consumer Law. 
+                </p>
+                <div class="flex gap-3 text-2xl opacity-40">
+                    <i class="ph-fill ph-shield-check" title="Insured"></i>
+                    <i class="ph-bold ph-lock-key" title="Secure Data"></i>
+                </div>
+                <p class="text-[10px] mt-2">© 2026 HaymanTech.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-end">
+        <a href="athena_ai.html" class="bg-brand-blue text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center border-2 border-white/20 w-14 h-14" title="Try Athena AI">
+            <i class="ph-fill ph-robot text-2xl"></i>
+        </a>
+
+        <a href="tel:0477267968" class="bg-brand-dark text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center border-2 border-white/20 w-14 h-14" title="Emergency Call">
+            <i class="ph-fill ph-phone text-2xl"></i>
+        </a>
+        <a href="https://wa.me/61477267968" target="_blank" rel="noopener" class="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center border-2 border-white/20 w-14 h-14" title="Chat on WhatsApp">
+            <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+        </a>
+    </div>
+
+    <div id="remoteModal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-900/70 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <div class="relative transform overflow-hidden rounded-3xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-md border-4 border-brand-blue">
+                    <div class="bg-blue-50 px-4 pb-4 pt-5 sm:p-6 border-b border-blue-100 text-center">
+                        <div class="mx-auto flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 mb-4">
+                            <i class="ph-bold ph-laptop text-2xl text-brand-blue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold leading-6 text-brand-dark">Appointment Required</h3>
+                        <p class="mt-2 text-sm text-gray-600">
+                            Remote support is available by <strong>appointment only</strong>. Please contact Dan to schedule a time before downloading the tool.
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-4 flex flex-col gap-3">
+                        <a href="tel:0477267968" class="inline-flex w-full justify-center rounded-xl bg-brand-green px-3 py-3 text-sm font-bold text-white shadow-sm hover:bg-green-700 items-center gap-2">
+                            <i class="ph-bold ph-phone"></i> Call to Book
+                        </a>
+                        
+                        <div class="relative flex py-1 items-center">
+                            <div class="flex-grow border-t border-gray-300"></div>
+                            <span class="flex-shrink-0 mx-4 text-xs text-gray-400 font-bold uppercase">I have an appointment</span>
+                            <div class="flex-grow border-t border-gray-300"></div>
+                        </div>
+
+                        <button type="button" onclick="startDownload()" class="inline-flex w-full justify-center rounded-xl bg-white border-2 border-brand-blue px-3 py-3 text-sm font-bold text-brand-blue shadow-sm hover:bg-blue-50 items-center gap-2">
+                            <i class="ph-bold ph-download-simple"></i> Download RustDesk
+                        </button>
+                        
+                        <button type="button" onclick="closeModal()" class="mt-2 w-full justify-center rounded-xl px-3 py-2 text-xs font-bold text-gray-400 hover:text-gray-600">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-900/70 backdrop-blur-sm transition-opacity" onclick="closePrivacy()"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4">
+                <div class="relative transform rounded-3xl bg-white text-left shadow-2xl transition-all sm:w-full sm:max-w-2xl border-4 border-gray-100 max-h-[80vh] overflow-y-auto">
+                    <div class="p-8">
+                        <h2 class="text-2xl font-bold text-brand-dark mb-4">Privacy Policy & Consumer Guarantees</h2>
+                        <div class="prose text-sm text-gray-600 space-y-4">
+                            <h3 class="font-bold text-black">1. Data Collection</h3>
+                            <p>We collect personal information (Name, Phone, Address) strictly for the purpose of delivering IT services. We do not sell your data.</p>
+                            <h3 class="font-bold text-black">2. Overseas Disclosure</h3>
+                            <p>We use third-party tools (such as Google Workspace and RustDesk) which may process data on servers located outside of Australia.</p>
+                            <h3 class="font-bold text-black">3. Australian Consumer Law (ACL)</h3>
+                            <p>Our goods and services come with guarantees that cannot be excluded under the Australian Consumer Law.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-6 py-4 flex flex-row-reverse">
+                        <button type="button" onclick="closePrivacy()" class="inline-flex justify-center rounded-xl bg-brand-dark px-6 py-3 text-sm font-bold text-white hover:bg-gray-800">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('remoteModal');
+        const body = document.body;
+        const installerUrl = "https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-x86_64.msi";
+        function openModal() { modal.classList.remove('hidden'); body.classList.add('modal-open'); }
+        function closeModal() { modal.classList.add('hidden'); body.classList.remove('modal-open'); }
+        function startDownload() { window.location.href = installerUrl; closeModal(); }
+
+        function openPrivacy() { document.getElementById('privacyModal').classList.remove('hidden'); body.classList.add('modal-open'); }
+        function closePrivacy() { document.getElementById('privacyModal').classList.add('hidden'); body.classList.remove('modal-open'); }
+
+        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+        document.addEventListener('keydown', function(event) { if (event.key === "Escape") { closeModal(); closePrivacy(); } });
+    </script>
+
+</body>
+</html>

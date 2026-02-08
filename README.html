@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaymanTech | Technical Documentation</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            green: '#3a7042',
+                            dark: '#1a1a1a',
+                            blue: '#2563eb',
+                            bg: '#f2efe6',
+                            cream: '#FFF9F5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        ai: ['Nunito', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .code-block { font-family: monospace; background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
+        .tree-line { border-left: 2px solid #e5e7eb; padding-left: 1rem; margin-left: 0.5rem; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <header class="bg-brand-dark text-white pt-16 pb-24">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center text-2xl shadow-lg border-2 border-white">
+                    <i class="ph-bold ph-code"></i>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold">HaymanTech</h1>
+                    <p class="text-gray-400 text-sm font-bold uppercase tracking-widest">Business & Technical Documentation</p>
+                </div>
+            </div>
+            <p class="text-xl text-gray-300 max-w-2xl">
+                Source documentation for the HaymanTech website project. A "No-Backend" static site designed for speed, low maintenance, and high conversion.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 -mt-16 pb-12">
+        
+        <section class="bg-white rounded-2xl shadow-xl p-8 mb-8 border-t-4 border-brand-green">
+            <h2 class="text-2xl font-bold text-brand-dark mb-4 flex items-center gap-2">
+                <i class="ph-fill ph-info text-brand-green"></i> Business Overview
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+                HaymanTech is a local IT support provider for Brisbane South (Macgregor, Sunnybank, Mt Gravatt). The brand distinguishes itself through empathy and communication skills derived from 15 years in hospitality, backed by enterprise engineering experience.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-brand-bg p-4 rounded-xl border border-gray-200">
+                    <strong class="block text-brand-dark mb-1">Core Philosophy</strong>
+                    <span class="text-sm text-gray-600">"Keep It Simple." No geek-speak, transparent pricing.</span>
+                </div>
+                <div class="bg-brand-bg p-4 rounded-xl border border-gray-200">
+                    <strong class="block text-brand-dark mb-1">Mascot</strong>
+                    <span class="text-sm text-gray-600">Athena (The loyal dog). Represents patience and loyalty.</span>
+                </div>
+                <div class="bg-brand-bg p-4 rounded-xl border border-gray-200">
+                    <strong class="block text-brand-dark mb-1">Target Audience</strong>
+                    <span class="text-sm text-gray-600">Seniors, Families, Remote Workers, Small Biz (1-20 staff).</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 space-y-8">
+                
+                <section class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+                    <h3 class="text-xl font-bold text-brand-dark mb-6 flex items-center gap-2">
+                        <i class="ph-bold ph-brackets-curly text-brand-blue"></i> Website Architecture
+                    </h3>
+                    <div class="space-y-4 text-sm">
+                        <p class="text-gray-600">The website utilizes a <strong>"No-Backend"</strong> architecture to reduce hosting costs and complexity. It relies on client-side logic for all interactivity.</p>
+                        
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-bold text-gray-700 mb-2">Tech Stack</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-600"></i> <strong>HTML5:</strong> Semantic static structure.</li>
+                                <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-600"></i> <strong>Tailwind CSS:</strong> Loaded via CDN for rapid development and consistent design system.</li>
+                                <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-600"></i> <strong>Phosphor Icons:</strong> Lightweight, clean SVG icon library.</li>
+                                <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-600"></i> <strong>Canvas Confetti:</strong> JS library for the "Success" animation in Athena AI.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+                    <h3 class="text-xl font-bold text-brand-dark mb-6 flex items-center gap-2">
+                        <i class="ph-bold ph-tree-structure text-brand-blue"></i> File Structure
+                    </h3>
+                    <div class="code-block text-sm">
+/root
+├── <span class="text-blue-400">index.html</span>        <span class="text-gray-500">// Main conversion funnel (Hero, Quick SMS, Map)</span>
+├── <span class="text-blue-400">about.html</span>        <span class="text-gray-500">// Dan's bio, Athena's story, Privacy Policy modal</span>
+├── <span class="text-blue-400">services.html</span>     <span class="text-gray-500">// Detailed pricing tables and FAQ</span>
+├── <span class="text-blue-400">athena_ai.html</span>    <span class="text-gray-500">// Standalone SPA for troubleshooting (The Logic Engine)</span>
+├── <span class="text-yellow-400">logo.png</span>          <span class="text-gray-500">// Brand asset</span>
+└── <span class="text-yellow-400">README.txt</span>        <span class="text-gray-500">// Original documentation source</span>
+                    </div>
+                </section>
+
+                <section class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-5">
+                        <i class="ph-fill ph-robot text-9xl text-brand-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-6 flex items-center gap-2">
+                        <i class="ph-bold ph-brain text-brand-green"></i> Athena AI Logic Engine
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Athena is a client-side JavaScript decision tree engine (`DECISION_TREE` object) found in <code>athena_ai.html</code>. She does <strong>not</strong> use Generative AI to ensure safety and accuracy.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-brand-green pl-4 py-1">
+                            <h5 class="font-bold text-brand-dark">1. Network Diagnostics</h5>
+                            <p class="text-xs text-gray-500">Checks for APIPA (169.254.x.x) -> Prescribes Router Reboot.<br>Checks for DNS failures (1.1.1.1 check) -> Prescribes <code>ipconfig /flushdns</code>.</p>
+                        </div>
+                        <div class="border-l-4 border-brand-blue pl-4 py-1">
+                            <h5 class="font-bold text-brand-dark">2. Printer Troubleshooting</h5>
+                            <p class="text-xs text-gray-500">Identifies "WSD Port" trap -> Forces switch to TCP/IP Port.</p>
+                        </div>
+                        <div class="border-l-4 border-gray-800 pl-4 py-1">
+                            <h5 class="font-bold text-brand-dark">3. Victory Verification</h5>
+                            <p class="text-xs text-gray-500">Includes a <code>VERIFY_FIX</code> node. Athena never declares success until the user confirms the issue is resolved.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <div class="space-y-8">
+                
+                <section class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-bold text-brand-dark mb-4">Brand Identity</h3>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-lg shadow-sm bg-brand-green"></div>
+                            <div>
+                                <div class="font-bold text-xs uppercase">Brand Green</div>
+                                <div class="font-mono text-xs text-gray-500">#3a7042</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-lg shadow-sm bg-brand-blue"></div>
+                            <div>
+                                <div class="font-bold text-xs uppercase">Brand Blue</div>
+                                <div class="font-mono text-xs text-gray-500">#2563eb</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-lg shadow-sm bg-brand-dark"></div>
+                            <div>
+                                <div class="font-bold text-xs uppercase">Charcoal</div>
+                                <div class="font-mono text-xs text-gray-500">#1a1a1a</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-lg shadow-sm bg-brand-cream border border-gray-200"></div>
+                            <div>
+                                <div class="font-bold text-xs uppercase">Cream</div>
+                                <div class="font-mono text-xs text-gray-500">#FFF9F5</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="font-bold text-xs uppercase text-gray-400 mb-2">Typography</h4>
+                        <p class="font-sans text-xl font-bold">Inter <span class="text-sm font-normal text-gray-500">(Main Site)</span></p>
+                        <p class="font-ai text-xl font-bold">Nunito <span class="text-sm font-normal text-gray-500">(Athena AI)</span></p>
+                    </div>
+                </section>
+
+                <section class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-bold text-brand-dark mb-4">Key Implementations</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-sm font-bold text-brand-green flex items-center gap-2">
+                                <i class="ph-bold ph-chat-text"></i> SMS "Quick Message"
+                            </h4>
+                            <p class="text-xs text-gray-600 mt-1">
+                                Located in <code>index.html</code>. Instead of a server sending emails, JavaScript captures input and opens the native SMS app using the <code>sms:0477...?body=</code> protocol. Zero spam filters, instant delivery.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-sm font-bold text-brand-blue flex items-center gap-2">
+                                <i class="ph-bold ph-laptop"></i> Remote Modal
+                            </h4>
+                            <p class="text-xs text-gray-600 mt-1">
+                                A popup modal that triggers the direct download of the RustDesk installer (.msi) from GitHub.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                                <i class="ph-bold ph-device-mobile"></i> Mobile Viewport Fix
+                            </h4>
+                            <p class="text-xs text-gray-600 mt-1">
+                                Uses <code>interactive-widget=resizes-content</code> in meta tags to ensure the iOS keyboard doesn't cover Athena's chat input.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-brand-dark text-white rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center gap-3"><i class="ph-fill ph-phone text-brand-green"></i> 0477 267 968</li>
+                        <li class="flex items-center gap-3"><i class="ph-fill ph-envelope text-brand-blue"></i> dan@haymantech.com.au</li>
+                        <li class="flex items-center gap-3"><i class="ph-fill ph-file-text"></i> ABN: 93 123 456 789</li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-8 text-center text-xs text-gray-500">
+        <p>Documentation generated for HaymanTech System.</p>
+        <p class="mt-1">&copy; 2026 HaymanTech.</p>
+    </footer>
+
+</body>
+</html>
